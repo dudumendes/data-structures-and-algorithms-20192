@@ -1,0 +1,18 @@
+{
+  "name": "data-structures-and-algorithms",
+  "version": "2.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel src --out-dir .compiled --source-maps --watch"
+  },
+  "keywords": [],
+  "author": "Eduardo Mendes edumendes@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
+  }
+}
