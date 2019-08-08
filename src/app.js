@@ -1,7 +1,13 @@
-//Este é o arquivo principal do projeto.
-//Os algoritmos sempre vão executar a partir deste
+import Node from './tree/Node'
 
-import {add, multiply} from './math';
-const num1 = 5, num2 = 10;
-console.log('Add: ', add(num1, num2));
-console.log('Multiply: ', multiply(num1, num2));
+let root = new Node(50)
+
+root.leftChild = new Node(20)
+root.leftChild.parent = root
+
+root.rightChild = new Node(100)
+root.rightChild.parent = root
+
+root.leftChild.rightChild = new Node(30)
+
+console.log(root)
