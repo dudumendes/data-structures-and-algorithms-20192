@@ -15,9 +15,17 @@ export default class BinarySearchTree {
 
     addNode(node, key) {
         if (key < node.key) {
-            node.leftChild = new Node(key)
+            if (!node.hasLeftChild()) {
+                node.leftChild = new Node(key)
+            } else {
+                this.addNode(node.leftChild, key)
+            }
         } else {
-            node.rightChild = new Node(key)
+            if(node.hasRightChild()) {
+                this.addNode(node.rightChild, key)
+            } else {
+                node.rightChild = new Node(key)
+            }
         }
     }
 }

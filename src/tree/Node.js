@@ -1,9 +1,9 @@
 class Node {
     constructor(key) {
+        this.key = key
         this.parent = null
         this.leftChild = null
         this.rightChild = null
-        this.key = key
     }
 
     depth() {
