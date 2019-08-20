@@ -1,13 +1,9 @@
-import Node from './tree/Node'
+import BST from './tree/BinarySearchTree'
 
-let root = new Node(50)
+let numbers = [13, 27, 10]
 
-root.leftChild = new Node(20)
-root.leftChild.parent = root
+let tree = new BST()
 
-root.rightChild = new Node(100)
-root.rightChild.parent = root
+numbers.forEach( key => tree.add(key))
 
-root.leftChild.rightChild = new Node(30)
-
-console.log(root)
+console.log(tree)
