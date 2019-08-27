@@ -65,5 +65,31 @@ export default class BinarySearchTree {
         return node
     }
 
+    preOrder(operation) {
+        this.preOrderNode(this._root, operation)
+    }
 
+    preOrderNode(node, operation) {
+        if (node != null) {
+            operation(node)
+            this.preOrderNode(node.leftChild, operation)
+            this.preOrderNode(node.rightChild, operation)
+        }
+    }
+
+    inOrder() {
+
+    }
+
+    inOrderNode(node) {
+
+    }
+
+    posOrder() {
+
+    }
+
+    posOrderNode() {
+
+    }
 }
