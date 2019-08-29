@@ -7,7 +7,10 @@ class Node {
     }
 
     depth() {
-
+        if (this.isRoot())
+            return 0
+        else
+            return this.parent.depth() + 1
     }
 
     height() {
