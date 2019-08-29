@@ -92,4 +92,24 @@ export default class BinarySearchTree {
     posOrderNode() {
 
     }
+
+    sum() {
+        return this.sumNodes(this._root)
+    }
+
+    sumNodes(node) {
+        let sum = 0
+
+        if (node) {
+            sum = sum + node.key
+            sum += this.sumNodes(node.leftChild)
+            sum += this.sumNodes(node.rightChild)
+        }
+
+        return sum
+    }
+
+    size() {
+
+    }
 }
