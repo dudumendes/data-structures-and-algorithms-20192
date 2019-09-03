@@ -7,4 +7,4 @@ let tree = new BST()
 
 numbers.forEach( key => tree.otherAdd(key) )
 
-tree.breadthSearchFirstPrint()
+tree.breadthSearchFirst(printKey)
