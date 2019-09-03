@@ -112,4 +112,22 @@ export default class BinarySearchTree {
     size() {
 
     }
+
+    breadthSearchFirst(operation) {
+        let queue = []
+        queue.push(this._root)
+
+        while(queue.length > 0) {
+            let node = queue.shift()
+            operation(node)
+
+            if (node.leftChild) {
+                queue.push(node.leftChild)
+            }
+            if (node.rightChild) {
+                queue.push(node.rightChild)
+            }
+        }
+    }
+
 }
