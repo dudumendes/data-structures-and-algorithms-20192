@@ -108,6 +108,7 @@ export default class BinarySearchTree {
 
         return sum
     }
+    
     size() {
 
     }
@@ -150,13 +151,17 @@ export default class BinarySearchTree {
 
         if (founded) {
             if (founded.isLeaf()) {
-                if (founded.isLeftChild()) {
-                    founded.parent.leftChild = null
-                    founded.parent = null
+                if (founded.isRoot()) {
+                    this._root = null
                 } else {
-                    founded.parent.rightChild = null
+                    let child = (founded.isLeftChild()) ? 'leftChild' : 'rightChild'
+                    founded.parent[child] = null
                     founded.parent = null
                 }
+            } else if (founded.hasBothChildren()) {
+
+            } else {
+
             }
         }
     }
