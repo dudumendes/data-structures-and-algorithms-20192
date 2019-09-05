@@ -108,8 +108,23 @@ export default class BinarySearchTree {
 
         return sum
     }
-
     size() {
+
+    }
+
+    minimum() {
+
+    }
+
+    minimumNode(node) {
+
+    }
+
+    maximum() {
+
+    }
+
+    maximumNode(node) {
 
     }
 
@@ -126,6 +141,22 @@ export default class BinarySearchTree {
             }
             if (node.rightChild) {
                 queue.push(node.rightChild)
+            }
+        }
+    }
+
+    remove(key) {
+        let founded = this.search(key)
+
+        if (founded) {
+            if (founded.isLeaf()) {
+                if (founded.isLeftChild()) {
+                    founded.parent.leftChild = null
+                    founded.parent = null
+                } else {
+                    founded.parent.rightChild = null
+                    founded.parent = null
+                }
             }
         }
     }
