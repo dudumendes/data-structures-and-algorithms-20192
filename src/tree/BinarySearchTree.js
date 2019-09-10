@@ -7,7 +7,7 @@ export default class BinarySearchTree {
 
     add(key) {
         if (this._root == null) {
-           this._root = new Node(key) 
+            this._root = new Node(key)
         } else {
             this.addNode(this._root, key)
         }
@@ -16,13 +16,13 @@ export default class BinarySearchTree {
     addNode(node, key) {
         if (key < node.key) {
             if (node.hasLeftChild()) {
-                this.addNode(node.leftChild, key)                
+                this.addNode(node.leftChild, key)
             } else {
                 node.leftChild = new Node(key)
                 node.leftChild.parent = node
             }
         } else {
-            if(node.hasRightChild()) {
+            if (node.hasRightChild()) {
                 this.addNode(node.rightChild, key)
             } else {
                 node.rightChild = new Node(key)
@@ -33,7 +33,7 @@ export default class BinarySearchTree {
 
     otherAdd(key) {
         if (this._root == null) {
-           this._root = new Node(key) 
+            this._root = new Node(key)
         } else {
             this.otherAddNode(this._root, key)
         }
@@ -43,7 +43,7 @@ export default class BinarySearchTree {
         let child = (key < node.key) ? "leftChild" : "rightChild"
 
         if (node[child]) {
-            this.otherAddNode(node[child], key)                
+            this.otherAddNode(node[child], key)
         } else {
             node[child] = new Node(key, node)
         }
@@ -58,7 +58,7 @@ export default class BinarySearchTree {
 
         if (key < node.key)
             return this.searchNode(node.leftChild, key)
-        
+
         if (key > node.key)
             return this.searchNode(node.rightChild, key)
 
@@ -108,32 +108,48 @@ export default class BinarySearchTree {
 
         return sum
     }
-    
+
     size() {
 
     }
 
     minimum() {
-
+        return this.minimumNode(this._root)
     }
 
     minimumNode(node) {
+        let minimum = node
 
+        if (minimum) {
+            while (minimum.hasLeftChild()) {
+                minimum = minimum.leftChild
+            }
+        }
+
+        return minimum
     }
 
     maximum() {
-
+        return this.maximumNode(this._root)
     }
 
     maximumNode(node) {
+        let maximum = node
 
+        if (maximum) {
+            while (maximum.hasRightChild()) {
+                maximum = maximum.rightChild
+            }
+        }
+
+        return maximum
     }
 
     breadthSearchFirst(operation) {
         let queue = []
         queue.push(this._root)
 
-        while(queue.length > 0) {
+        while (queue.length > 0) {
             let node = queue.shift()
             operation(node)
 
@@ -160,10 +176,23 @@ export default class BinarySearchTree {
                 }
             } else if (founded.hasBothChildren()) {
 
-            } else {
+            } else { //1 child only
+                let child = (founded.hasLeftChild()) ? "leftChild" : "rightChild"
 
+                if (founded.isRoot()) {
+                    this._root = this._root[child]
+                    this._root.parent = null
+                    founded[child] = null
+                } else {
+                    let isChild = founded.isLeftChild() ? "leftChild" : "rightChild"
+                    founded[child].parent = founded.parent
+                    founded.parent[isChild] = founded[child]
+
+                    founded.parent = null
+                    founded[child] = null
+                }
             }
         }
     }
-
 }
+
