@@ -163,59 +163,59 @@ export default class BinarySearchTree {
     }
 
     remove(key) {
-        let founded = this.search(key)
+        let found = this.search(key)
 
-        if (founded) {
-            if (founded.isLeaf()) {
-                if (founded.isRoot()) {
+        if (found) {
+            if (found.isLeaf()) {
+                if (found.isRoot()) {
                     this._root = null
                 } else {
-                    let child = (founded.isLeftChild()) ? 'leftChild' : 'rightChild'
-                    founded.parent[child] = null
-                    founded.parent = null
+                    let child = (found.isLeftChild()) ? 'leftChild' : 'rightChild'
+                    found.parent[child] = null
+                    found.parent = null
                 }
-            } else if (founded.hasBothChildren()) {
+            } else if (found.hasBothChildren()) {
                 
-                let substitute = this.maximumNode(founded.leftChild)
+                let substitute = this.maximumNode(found.leftChild)
                 this.remove(substitute.key)
                 
-                substitute.leftChild = founded.leftChild
+                substitute.leftChild = found.leftChild
                 if (substitute.leftChild) 
                     substitute.leftChild.parent = substitute
-                founded.leftChild = null
+                found.leftChild = null
 
-                substitute.rightChild = founded.rightChild
+                substitute.rightChild = found.rightChild
                 if (substitute.rightChild) 
                     substitute.rightChild.parent = substitute
-                founded.rightChild = null
+                found.rightChild = null
 
-                substitute.parent = founded.parent
+                substitute.parent = found.parent
 
-                if (founded.isRoot()) {
+                if (found.isRoot()) {
                     this._root = substitute
                 } else {
-                    if (founded.isLeftChild()) {
-                        founded.parent.leftChild = substitute
+                    if (found.isLeftChild()) {
+                        found.parent.leftChild = substitute
                     } else {
-                        founded.parent.rightChild = substitute
+                        found.parent.rightChild = substitute
                     }
-                    founded.parent = null                    
+                    found.parent = null                    
                 }
 
             } else { //1 child only
-                let child = (founded.hasLeftChild()) ? "leftChild" : "rightChild"
+                let child = (found.hasLeftChild()) ? "leftChild" : "rightChild"
 
-                if (founded.isRoot()) {
+                if (found.isRoot()) {
                     this._root = this._root[child]
                     this._root.parent = null
-                    founded[child] = null
+                    found[child] = null
                 } else {
-                    let isChild = founded.isLeftChild() ? "leftChild" : "rightChild"
-                    founded[child].parent = founded.parent
-                    founded.parent[isChild] = founded[child]
+                    let isChild = found.isLeftChild() ? "leftChild" : "rightChild"
+                    found[child].parent = found.parent
+                    found.parent[isChild] = found[child]
 
-                    founded.parent = null
-                    founded[child] = null
+                    found.parent = null
+                    found[child] = null
                 }
             }
         }
