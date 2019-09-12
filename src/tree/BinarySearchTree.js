@@ -175,6 +175,32 @@ export default class BinarySearchTree {
                     founded.parent = null
                 }
             } else if (founded.hasBothChildren()) {
+                
+                let substitute = this.maximumNode(founded.leftChild)
+                this.remove(substitute.key)
+                
+                substitute.leftChild = founded.leftChild
+                if (substitute.leftChild) 
+                    substitute.leftChild.parent = substitute
+                founded.leftChild = null
+
+                substitute.rightChild = founded.rightChild
+                if (substitute.rightChild) 
+                    substitute.rightChild.parent = substitute
+                founded.rightChild = null
+
+                substitute.parent = founded.parent
+
+                if (founded.isRoot()) {
+                    this._root = substitute
+                } else {
+                    if (founded.isLeftChild()) {
+                        founded.parent.leftChild = substitute
+                    } else {
+                        founded.parent.rightChild = substitute
+                    }
+                    founded.parent = null                    
+                }
 
             } else { //1 child only
                 let child = (founded.hasLeftChild()) ? "leftChild" : "rightChild"
