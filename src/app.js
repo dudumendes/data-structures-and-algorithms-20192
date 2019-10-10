@@ -1,23 +1,16 @@
-import BST from './tree/BinarySearchTree'
-import  {printIndetendKey} from './tree/transversalOperations'
+import Graph from './graph/list/Graph'
 
-import { createArray, linearSearch } from './util/array'
+let graph = new Graph()
 
-console.time('createArray');
-let numbers = createArray(1000000)
-console.timeEnd('createArray');
+let u = graph.addVertex("u")
+let v = graph.addVertex("v")
+let w = graph.addVertex("w")
+let z = graph.addVertex("z")
 
-console.time('createTree');
-let tree = new BST()
-numbers.forEach(number => tree.otherAdd(number))
-console.timeEnd('createTree');
+let e = graph.addEdge(u, v, "e")
+let f = graph.addEdge(v, w, "f")
+let g = graph.addEdge(u, w, "g")
+let i = graph.addEdge(w, z, "i")
 
-//tree.preOrder(printIndetendKey)
-
-console.time("search 989999 tree")
-tree.search(989999)
-console.timeEnd("search 989999 tree")
-
-console.time("linearSearch 989999 linear")
-linearSearch(numbers, 989999)
-console.timeEnd("linearSearch 989999 linear")
+console.log(graph.vertices)
+console.log(graph.edges)
