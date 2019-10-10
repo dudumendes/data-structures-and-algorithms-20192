@@ -77,20 +77,28 @@ export default class BinarySearchTree {
         }
     }
 
-    inOrder() {
-
+    inOrder(operation) {
+        this.inOrderNode(this._root, operation)
     }
 
-    inOrderNode(node) {
-
+    inOrderNode(node, operation) {
+        if (node != null) {
+            this.inOrderNode(node.leftChild, operation)
+            operation(node)
+            this.inOrderNode(node.rightChild, operation)
+        }
     }
 
-    posOrder() {
-
+    posOrder(operation) {
+        this.posOrderNode(this._root, operation)
     }
 
-    posOrderNode() {
-
+    posOrderNode(node, operation) {
+        if (node != null) {
+            this.inOrderNode(node.leftChild, operation)
+            this.inOrderNode(node.rightChild, operation)
+            operation(node)
+        }
     }
 
     sum() {
