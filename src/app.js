@@ -1,4 +1,4 @@
-import Graph from './graph/list/Graph'
+import Graph from './graph/edgeList/Graph'
 
 let graph = new Graph()
 

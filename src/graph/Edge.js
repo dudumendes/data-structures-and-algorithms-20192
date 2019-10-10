@@ -14,6 +14,6 @@ export default class Edge {
     }
 
     opposite(v) {
-        //return the oppsite to v
+        //return the opposite vertex to v
     }
 }
