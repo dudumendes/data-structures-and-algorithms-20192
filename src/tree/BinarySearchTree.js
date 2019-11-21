@@ -225,6 +225,7 @@ export default class BinarySearchTree {
                     found.parent = null
                     found[child] = null
                 }
+                found = null
             }
         }
     }

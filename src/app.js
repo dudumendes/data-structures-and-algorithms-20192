@@ -1,4 +1,4 @@
-import Graph from './graph/edgeList/Graph'
+import Graph from './graph/adjacencyList/Graph'
 
 let graph = new Graph()
 
@@ -12,5 +12,4 @@ let f = graph.addEdge(v, w, "f")
 let g = graph.addEdge(u, w, "g")
 let i = graph.addEdge(w, z, "i")
 
-console.log(graph.vertices)
-console.log(graph.edges)
+graph.adjacencyList()

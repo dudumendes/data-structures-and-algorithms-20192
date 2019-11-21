@@ -15,4 +15,12 @@ export default class Vertex {
     toString() {
         return this._element
     }
+
+    adjacencyList() {
+        let list = "" + this
+
+        this._outgoing.forEach( edge => list += ` -> ${edge.element}`)
+
+        return list
+    }
 }

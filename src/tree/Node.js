@@ -43,7 +43,6 @@ class Node {
 
     isRightChild() {
         return this.parent && this.parent.rightChild === this
-
     }
 }
 

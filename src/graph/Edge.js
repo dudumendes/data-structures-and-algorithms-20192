@@ -13,7 +13,11 @@ export default class Edge {
         return [origin, destination]
     }
 
-    opposite(v) {
-        //return the opposite vertex to v
+    opposite(vertex) {
+        if (vertex === this._origin) { 
+            return this._destination
+        } else {
+            return this._origin
+        }
     }
 }

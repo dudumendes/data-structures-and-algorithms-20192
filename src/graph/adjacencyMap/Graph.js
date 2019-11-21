@@ -3,21 +3,21 @@ import Edge from '../Edge'
 
 export default class Graph {
     constructor() {
-        this._vertices = []
+        this._outgoing = new Map()
     }
 
     addVertex(element) {
         let vertex = new Vertex(element)
-        this._vertices.push(vertex)
+        this._outgoing(vertex, new Map())
         return vertex
     }
 
     addEdge(origin, destination, element = null) {
         let edge = new Edge(origin, destination, element)
-        origin.addEdge(edge)
-        destination.addEdge(edge)
+        this._outgoing.get(origin).set(destination, edge)
+        this._outgoing.get(destination).set(origin, edge)
 
-        return edge
+        // return edge
     }
 
     adjacencyList() {
